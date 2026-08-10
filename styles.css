@@ -29,7 +29,9 @@ a {
 }
 
 
-/* Navigation */
+/* ========================================
+   Navigation
+======================================== */
 
 .navbar {
     position: sticky;
@@ -72,7 +74,42 @@ a {
 }
 
 
-/* Main */
+/* ========================================
+   Mobile Menu
+======================================== */
+
+.menu-toggle {
+    display: none;
+
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 22px;
+    height: 2px;
+
+    background: var(--text);
+    border-radius: 2px;
+}
+
+
+/* ========================================
+   Main
+======================================== */
 
 main {
     max-width: 1100px;
@@ -81,7 +118,9 @@ main {
 }
 
 
-/* Hero */
+/* ========================================
+   Hero
+======================================== */
 
 .hero {
     min-height: 600px;
@@ -145,11 +184,13 @@ main {
 }
 
 
-/* Introduction */
+/* ========================================
+   Introduction
+======================================== */
 
 .intro {
     max-width: 800px;
-    padding: 100px 0;
+    padding: 70px 0;
 }
 
 .intro p {
@@ -162,7 +203,9 @@ main {
 }
 
 
-/* General Sections */
+/* ========================================
+   General Sections
+======================================== */
 
 .content-section {
     padding: 60px 0;
@@ -200,7 +243,9 @@ main {
 }
 
 
-/* Services */
+/* ========================================
+   Services
+======================================== */
 
 .service-grid {
     display: grid;
@@ -228,7 +273,9 @@ main {
 }
 
 
-/* TFL Development Tool */
+/* ========================================
+   TFL Development Tool
+======================================== */
 
 .tfl-section {
     padding-bottom: 60px;
@@ -306,7 +353,9 @@ main {
 }
 
 
-/* Contact */
+/* ========================================
+   Contact
+======================================== */
 
 .contact-section {
     padding: 60px 0 80px;
@@ -335,9 +384,6 @@ main {
     margin: 8px 0;
 }
 
-
-/* Contact Email */
-
 .contact-email {
     display: flex;
     align-items: center;
@@ -352,7 +398,6 @@ main {
 
     width: 28px;
     height: 28px;
-
     padding: 0;
 
     color: var(--accent);
@@ -378,7 +423,9 @@ main {
 }
 
 
-/* Footer */
+/* ========================================
+   Footer
+======================================== */
 
 footer {
     margin-top: 20px;
@@ -397,7 +444,9 @@ footer {
 }
 
 
-/* Tablet */
+/* ========================================
+   Tablet
+======================================== */
 
 @media (max-width: 800px) {
 
@@ -409,11 +458,6 @@ footer {
         font-size: 0.9rem;
     }
 
-    .nav-links {
-        gap: 16px;
-        font-size: 0.8rem;
-    }
-
     main {
         padding: 0 20px;
     }
@@ -421,10 +465,6 @@ footer {
     .hero {
         min-height: 500px;
         padding: 100px 0 70px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     .hero h1 {
@@ -436,7 +476,7 @@ footer {
     }
 
     .content-section {
-        padding: 80px 0;
+        padding: 70px 0;
     }
 
     .service-grid {
@@ -456,71 +496,29 @@ footer {
 }
 
 
-/* Small Mobile */
+/* ========================================
+   Mobile
+======================================== */
 
 @media (max-width: 600px) {
 
-    .nav-container {
-        align-items: flex-start;
-    }
-
-    .nav-links {
-        gap: 12px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .feature-row {
-        grid-template-columns: 45px 1fr;
-        gap: 16px;
-        padding: 25px 0;
-    }
-
-    .feature-content h4 {
-        font-size: 1.15rem;
-    }
-}
-
-/* Mobile Menu Button */
-
-.menu-toggle {
-    display: none;
-
-    width: 36px;
-    height: 36px;
-
-    padding: 7px;
-
-    background: transparent;
-    border: 0;
-
-    cursor: pointer;
-
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 100%;
-    height: 2px;
-
-    background: var(--text);
-}
-
-
-/* Mobile Navigation */
-
-@media (max-width: 600px) {
+    /* Navigation */
 
     .nav-container {
         position: relative;
+        padding: 14px 20px;
+        align-items: center;
+    }
+
+    .logo {
+        max-width: calc(100% - 55px);
+        font-size: 0.9rem;
+        line-height: 1.3;
     }
 
     .menu-toggle {
         display: flex;
+        flex-shrink: 0;
     }
 
     .nav-links {
@@ -531,7 +529,7 @@ footer {
         left: 0;
         right: 0;
 
-        padding: 15px 20px 20px;
+        padding: 10px 20px 15px;
 
         flex-direction: column;
         gap: 0;
@@ -545,12 +543,112 @@ footer {
     }
 
     .nav-links a {
+        display: block;
         padding: 12px 0;
 
         font-size: 0.95rem;
     }
 
-    .nav-links a:nth-child(2) {
-        display: block;
+
+    /* Hero */
+
+    .hero {
+        min-height: 0;
+        padding: 85px 0 60px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1.05rem;
+    }
+
+
+    /* Introduction */
+
+    .intro {
+        padding: 60px 0;
+    }
+
+    .intro p {
+        font-size: 1rem;
+    }
+
+
+    /* Sections */
+
+    .content-section {
+        padding: 60px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2,
+    .contact-section h2 {
+        font-size: 2.3rem;
+    }
+
+    .section-heading h3 {
+        font-size: 1.05rem;
+    }
+
+    .section-intro {
+        margin-bottom: 45px;
+        font-size: 1rem;
+    }
+
+
+    /* Services */
+
+    .service-grid {
+        gap: 40px;
+    }
+
+    .service-card h3 {
+        margin-bottom: 18px;
+    }
+
+
+    /* TFL */
+
+    .tfl-description {
+        margin-bottom: 45px;
+    }
+
+    .feature-row {
+        grid-template-columns: 45px 1fr;
+        gap: 16px;
+        padding: 25px 0;
+    }
+
+    .feature-content h4 {
+        font-size: 1.15rem;
+    }
+
+    .feature-content p {
+        font-size: 0.9rem;
+    }
+
+
+    /* Contact */
+
+    .contact-section {
+        padding: 60px 0 70px;
+    }
+}
+
+
+/* ========================================
+   Desktop
+======================================== */
+
+@media (min-width: 601px) {
+
+    .menu-toggle {
+        display: none;
     }
 }
