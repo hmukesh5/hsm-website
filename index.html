@@ -6,18 +6,54 @@
     <title>HSM Consultancy Services, LLC</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+    function toggleMenu() {
+        const menu = document.querySelector(".nav-links");
+        const button = document.querySelector(".menu-toggle");
 
+        menu.classList.toggle("open");
+
+        button.setAttribute(
+            "aria-expanded",
+            menu.classList.contains("open")
+        );
+    }
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            document.querySelector(".nav-links").classList.remove("open");
+            document.querySelector(".menu-toggle").setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        });
+    });
+</script>
 <body>
 
 <nav class="navbar">
     <div class="nav-container">
+
         <a href="#" class="logo">HSM Consultancy Services, LLC</a>
 
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            onclick="toggleMenu()"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <div class="nav-links">
-            <a href="#services">Our Services</a>
+            <a href="#services">Services</a>
             <a href="#tfl-tool">TFL Development Tool</a>
             <a href="#contact">Contact</a>
         </div>
+
     </div>
 </nav>
 
