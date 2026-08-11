@@ -39,7 +39,7 @@
             </button>
 
             <div class="nav-links">
-                <a href="#services">Services</a>
+                <a href="#services">Our Services</a>
                 <a href="#tfl-tool">TFL Development Tool</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -70,11 +70,10 @@
                 and medical device clinical development programs.
             </p>
 
-            <a href="#contact" class="hero-button">
-                Contact Us ↓
-            </a>
-
         </section>
+
+
+        <div class="section-divider" aria-hidden="true"></div>
 
 
         <!-- Introduction -->
@@ -99,6 +98,9 @@
             </p>
 
         </section>
+
+
+        <div class="section-divider" aria-hidden="true"></div>
 
 
         <!-- Services -->
@@ -172,6 +174,9 @@
         </section>
 
 
+        <div class="section-divider" aria-hidden="true"></div>
+
+
         <!-- TFL Development Tool -->
 
         <section
@@ -182,17 +187,12 @@
             <div class="section-heading">
 
                 <p class="eyebrow">
-                    Our Technology
+                    Our Solution for Clinical Trial Reporting
                 </p>
 
                 <h2>
                     TFL Development Tool
                 </h2>
-
-                <h3>
-                    A Validated, Flexible, and Efficient Solution for
-                    Clinical Trial Reporting
-                </h3>
 
             </div>
 
@@ -374,38 +374,54 @@
                 consulting needs.
             </p>
 
-            <div class="contact-details">
+            <form
+                id="contact-form"
+                class="contact-form"
+                method="post"
+                action="https://formspree.io/f/mkjwrojr"
+            >
 
-                <p class="contact-email">
-
-                    <strong>Email:</strong>
-
-                    <span id="email-address">
-                        [email address]
-                    </span>
-
-                    <button
-                        type="button"
-                        class="icon-button"
-                        onclick="copyEmail()"
-                        aria-label="Copy email address"
-                        title="Copy email address"
+                <label>
+                    <span>Name</span>
+                    <input
+                        type="text"
+                        name="name"
+                        autocomplete="name"
+                        required
                     >
-                        ⧉
-                    </button>
+                </label>
 
-                    <a
-                        href="mailto:[email address]"
-                        class="icon-button"
-                        aria-label="Open email application"
-                        title="Open email application"
+                <label>
+                    <span>Email</span>
+                    <input
+                        type="email"
+                        name="email"
+                        autocomplete="email"
+                        required
                     >
-                        ↗
-                    </a>
+                </label>
 
-                </p>
+                <label>
+                    <span>Message</span>
+                    <textarea
+                        name="message"
+                        rows="6"
+                        required
+                    ></textarea>
+                </label>
 
-            </div>
+                <button type="submit">
+                    Send Message
+                </button>
+
+                <p
+                    id="form-status"
+                    class="form-status"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
 
         </section>
 
@@ -450,14 +466,41 @@
             });
         });
 
-        function copyEmail() {
-            const email = document
-                .getElementById("email-address")
-                .textContent
-                .trim();
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
 
-            navigator.clipboard.writeText(email);
-        }
+        contactForm.addEventListener("submit", async event => {
+            event.preventDefault();
+
+            const submitButton = contactForm.querySelector("button");
+            const formData = new FormData(contactForm);
+
+            formStatus.textContent = "";
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error("Form submission failed");
+                }
+
+                contactForm.reset();
+                formStatus.textContent = "Thank you. Your message has been sent.";
+            } catch (error) {
+                formStatus.textContent = "Sorry, your message could not be sent. Please try again.";
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "Send Message";
+            }
+        });
     </script>
 
 </body>
